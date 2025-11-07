@@ -1,14 +1,22 @@
-
 import React from 'react';
 import { Tool } from '../types';
 
 interface ToolsGridProps {
   tools: Tool[];
+  onToolSelect: (key: string) => void;
 }
 
-const ToolCard: React.FC<{ tool: Tool }> = ({ tool }) => {
+const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ tool, onSelect }) => {
+  const isClickable = tool.key === 'professional-background-remover';
+  
+  const cardClasses = `
+    group relative rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300
+    hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10
+    ${isClickable ? 'cursor-pointer' : ''}
+  `;
+
   return (
-    <div className="group relative rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300 hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10">
+    <div className={cardClasses} onClick={() => onSelect(tool.key)}>
       <div className="flex items-center gap-4">
         <div className="flex-shrink-0 rounded-lg bg-slate-700 p-3 border border-slate-600 group-hover:border-sky-500 transition-colors">
           {tool.icon}
@@ -26,7 +34,7 @@ const ToolCard: React.FC<{ tool: Tool }> = ({ tool }) => {
   );
 };
 
-const ToolsGrid: React.FC<ToolsGridProps> = ({ tools }) => {
+const ToolsGrid: React.FC<ToolsGridProps> = ({ tools, onToolSelect }) => {
   return (
     <section id="tools" className="py-12 md:py-20">
       <div className="text-center mb-12 lg:mb-16">
@@ -36,8 +44,8 @@ const ToolsGrid: React.FC<ToolsGridProps> = ({ tools }) => {
         </p>
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {tools.map((tool, index) => (
-          <ToolCard key={index} tool={tool} />
+        {tools.map((tool) => (
+          <ToolCard key={tool.key} tool={tool} onSelect={onToolSelect} />
         ))}
       </div>
     </section>
