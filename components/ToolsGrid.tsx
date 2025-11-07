@@ -7,16 +7,24 @@ interface ToolsGridProps {
 }
 
 const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ tool, onSelect }) => {
-  const isClickable = tool.key === 'professional-background-remover';
+  const implementedTools = ['professional-background-remover', 'marketing-content-generator'];
+  const isClickable = implementedTools.includes(tool.key);
   
   const cardClasses = `
     group relative rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300
-    hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10
-    ${isClickable ? 'cursor-pointer' : ''}
+    ${isClickable 
+      ? 'cursor-pointer hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10' 
+      : 'cursor-not-allowed opacity-60'}
   `;
+  
+  const handleClick = () => {
+    if (isClickable) {
+      onSelect(tool.key);
+    }
+  };
 
   return (
-    <div className={cardClasses} onClick={() => onSelect(tool.key)}>
+    <div className={cardClasses} onClick={handleClick}>
       <div className="flex items-center gap-4">
         <div className="flex-shrink-0 rounded-lg bg-slate-700 p-3 border border-slate-600 group-hover:border-sky-500 transition-colors">
           {tool.icon}
@@ -30,6 +38,13 @@ const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ 
         {tool.description}
       </p>
        <div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition-all duration-300 [background:radial-gradient(400px_at_50%_50%,_rgba(56,189,248,0.2),_transparent_80%)] group-hover:opacity-100"></div>
+       {!isClickable && (
+          <div className="absolute top-2 right-2">
+            <span className="inline-flex items-center rounded-full bg-slate-900 px-2 py-1 text-xs font-medium text-slate-400 ring-1 ring-inset ring-slate-700">
+              Em Breve
+            </span>
+          </div>
+        )}
     </div>
   );
 };
