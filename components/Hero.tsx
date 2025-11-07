@@ -1,13 +1,17 @@
-
 import React from 'react';
-import { SparklesIcon } from '@heroicons/react/24/solid';
 
 const Hero: React.FC = () => {
   return (
     <header className="py-20 md:py-28 lg:py-32 text-center">
-      <div className="flex items-center justify-center mb-6">
-        <SparklesIcon className="h-8 w-8 text-sky-400 mr-3" />
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-200 to-slate-400">
+      <div className="flex items-center justify-center gap-4 mb-6">
+        {/* Modern Abstract Logo */}
+        <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center">
+            <div className="absolute w-6 h-full bg-gradient-to-b from-sky-400 to-indigo-600 rounded-lg transform -skew-x-12"></div>
+            <div className="absolute w-6 h-full bg-gradient-to-t from-sky-400 to-cyan-400 rounded-lg transform skew-x-12 opacity-90 mix-blend-lighten"></div>
+        </div>
+
+        {/* Updated Text */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-cyan-300">
           Market Suite
         </h1>
       </div>
