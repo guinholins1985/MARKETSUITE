@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Tool } from './types';
-import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon } from '@heroicons/react/24/outline';
+import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon, BoltIcon, ScissorsIcon, PaintBrushIcon, SpeakerWaveIcon } from '@heroicons/react/24/outline';
 
 export const tools: Tool[] = [
   {
@@ -117,5 +116,29 @@ export const tools: Tool[] = [
     title: "Anúncios Google Shopping",
     description: "Gere e otimize seus anúncios para a plataforma Google Shopping automaticamente.",
     category: "Conteúdo & Copy"
+  },
+  {
+    icon: <BoltIcon className="h-8 w-8 text-yellow-400" />,
+    title: "Gerador de Gatilhos Mentais",
+    description: "Crie copys persuasivas com o poder da IA. Selecione um gatilho, informe seu produto e veja a mágica acontecer.",
+    category: "Conteúdo & Copy"
+  },
+  {
+    icon: <ScissorsIcon className="h-8 w-8 text-teal-400" />,
+    title: "Removedor de Fundo Profissional",
+    description: "Com a tecnologia do Gemini AI, remova fundos de imagens com um clique.",
+    category: "Visual & Imagem"
+  },
+  {
+    icon: <PaintBrushIcon className="h-8 w-8 text-purple-400" />,
+    title: "Gerador de Variações Visuais com IA",
+    description: "Envie uma imagem, descreva a alteração e deixe a IA criar algo novo para você.",
+    category: "Visual & Imagem"
+  },
+  {
+    icon: <SpeakerWaveIcon className="h-8 w-8 text-blue-400" />,
+    title: "Clonador de Voz AI",
+    description: "Forneça um áudio para clonar o estilo da voz e narrar seu texto.",
+    category: "Utilitários"
   }
 ];

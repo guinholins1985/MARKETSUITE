@@ -4,7 +4,7 @@ import { SparklesIcon } from '@heroicons/react/24/solid';
 
 const Hero: React.FC = () => {
   return (
-    <header className="py-20 md:py-32 text-center">
+    <header className="py-20 md:py-28 lg:py-32 text-center">
       <div className="flex items-center justify-center mb-6">
         <SparklesIcon className="h-8 w-8 text-sky-400 mr-3" />
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-200 to-slate-400">
