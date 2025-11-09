@@ -6,11 +6,13 @@ import Footer from './components/Footer';
 import ProfessionalBackgroundRemover from './components/ProfessionalBackgroundRemover';
 import MarketingContentGenerator from './components/MarketingContentGenerator';
 import { Tool } from './types';
+import NotificationGenerator from './components/NotificationGenerator';
+import PixReceiptGenerator from './components/PixReceiptGenerator';
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
 
-  const implementedTools = ['professional-background-remover', 'marketing-content-generator'];
+  const implementedTools = ['professional-background-remover', 'marketing-content-generator', 'notification-generator', 'pix-receipt-generator'];
 
   const handleToolSelect = (toolKey: string) => {
     if (implementedTools.includes(toolKey)) {
@@ -35,6 +37,22 @@ const App: React.FC = () => {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <MarketingContentGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'notification-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <NotificationGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'pix-receipt-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <PixReceiptGenerator onBack={handleBack} />
         </main>
       );
     }

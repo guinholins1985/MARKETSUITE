@@ -7,7 +7,7 @@ interface ToolsGridProps {
 }
 
 const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ tool, onSelect }) => {
-  const implementedTools = ['professional-background-remover', 'marketing-content-generator'];
+  const implementedTools = ['professional-background-remover', 'marketing-content-generator', 'notification-generator', 'pix-receipt-generator'];
   const isClickable = implementedTools.includes(tool.key);
   
   const cardClasses = `

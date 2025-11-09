@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tool } from './types';
-import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon, BoltIcon, ScissorsIcon, PaintBrushIcon, SpeakerWaveIcon } from '@heroicons/react/24/outline';
+import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon, BoltIcon, ScissorsIcon, PaintBrushIcon, SpeakerWaveIcon, BellIcon, DocumentCheckIcon } from '@heroicons/react/24/outline';
 
 export const tools: Tool[] = [
   {
@@ -162,6 +162,20 @@ export const tools: Tool[] = [
     icon: <SpeakerWaveIcon className="h-8 w-8 text-blue-400" />,
     title: "Clonador de Voz AI",
     description: "Forneça um áudio para clonar o estilo da voz e narrar seu texto.",
+    category: "Utilitários"
+  },
+  {
+    key: "notification-generator",
+    icon: <BellIcon className="h-8 w-8 text-yellow-400" />,
+    title: "Gerador de Notificações",
+    description: "Crie e personalize alertas de transações com um design profissional.",
+    category: "Utilitários"
+  },
+  {
+    key: "pix-receipt-generator",
+    icon: <DocumentCheckIcon className="h-8 w-8 text-green-400" />,
+    title: "Gerador de Comprovante PIX",
+    description: "Preencha os campos manualmente ou use a IA para gerar dados aleatórios e visualizar um modelo de comprovante.",
     category: "Utilitários"
   }
 ];
