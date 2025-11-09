@@ -5,10 +5,22 @@ import ToolsGrid from './components/ToolsGrid';
 import Footer from './components/Footer';
 import ProfessionalBackgroundRemover from './components/ProfessionalBackgroundRemover';
 import MarketingContentGenerator from './components/MarketingContentGenerator';
+import NotificationGenerator from './components/NotificationGenerator';
 import PixReceiptGenerator from './components/PixReceiptGenerator';
 import ThreeDMockupGenerator from './components/3dMockupGenerator';
 import VisualVariationsGenerator from './components/VisualVariationsGenerator';
 import CaptionGenerator from './components/CaptionGenerator';
+import CouponGenerator from './components/CouponGenerator';
+import PostGenerator from './components/PostGenerator';
+import BannerGenerator from './components/BannerGenerator';
+import PpcAdGenerator from './components/PpcAdGenerator';
+import RemarketingCampaignGenerator from './components/RemarketingCampaignGenerator';
+import Translator from './components/Translator';
+import StoriesImageGenerator from './components/StoriesImageGenerator';
+import AdOptimizer from './components/AdOptimizer';
+import MentalTriggersGenerator from './components/MentalTriggersGenerator';
+import ProductBundleGenerator from './components/ProductBundleGenerator';
+import AiVoiceCloner from './components/AiVoiceCloner';
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
@@ -20,15 +32,22 @@ const App: React.FC = () => {
     'pix-receipt-generator',
     '3d-mockup-generator',
     'visual-variations-generator',
-    'caption-generator'
+    'caption-generator',
+    'coupon-generator',
+    'post-generator',
+    'faq-generator',
+    'banner-generator',
+    'ppc-ad-generator',
+    'remarketing-campaign-generator',
+    'translator',
+    'stories-image-generator',
+    'ad-optimizer',
+    'mental-triggers-generator',
+    'product-bundle-generator',
+    'ai-voice-cloner'
   ];
 
   const handleToolSelect = (toolKey: string) => {
-    if (toolKey === 'notification-generator') {
-      window.open('https://megapost-gerador-notifica-oface.vercel.app/', '_blank');
-      return;
-    }
-    
     if (implementedTools.includes(toolKey)) {
       setActiveTool(toolKey);
     }
@@ -51,6 +70,14 @@ const App: React.FC = () => {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <MarketingContentGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+    
+    if (activeTool === 'notification-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <NotificationGenerator onBack={handleBack} />
         </main>
       );
     }
@@ -83,6 +110,102 @@ const App: React.FC = () => {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <CaptionGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'coupon-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <CouponGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'post-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <PostGenerator onBack={handleBack} toolKey={activeTool} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'faq-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <PostGenerator onBack={handleBack} toolKey={activeTool} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'banner-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <BannerGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'ppc-ad-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <PpcAdGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'remarketing-campaign-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <RemarketingCampaignGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+    
+    if (activeTool === 'translator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <Translator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'stories-image-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <StoriesImageGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'ad-optimizer') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <AdOptimizer onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'mental-triggers-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <MentalTriggersGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'product-bundle-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <ProductBundleGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'ai-voice-cloner') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <AiVoiceCloner onBack={handleBack} />
         </main>
       );
     }

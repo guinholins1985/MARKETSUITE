@@ -14,7 +14,19 @@ const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ 
       'pix-receipt-generator',
       '3d-mockup-generator',
       'visual-variations-generator',
-      'caption-generator'
+      'caption-generator',
+      'coupon-generator',
+      'post-generator',
+      'faq-generator',
+      'banner-generator',
+      'ppc-ad-generator',
+      'remarketing-campaign-generator',
+      'translator',
+      'stories-image-generator',
+      'ad-optimizer',
+      'mental-triggers-generator',
+      'product-bundle-generator',
+      'ai-voice-cloner'
   ];
   const isClickable = implementedTools.includes(tool.key);
   

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tool } from './types';
-import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon, BoltIcon, ScissorsIcon, PaintBrushIcon, SpeakerWaveIcon, BellIcon, DocumentCheckIcon } from '@heroicons/react/24/outline';
+import { CubeTransparentIcon, BeakerIcon, SparklesIcon, PhotoIcon, PencilSquareIcon, AdjustmentsHorizontalIcon, CurrencyDollarIcon, PresentationChartLineIcon, ChatBubbleBottomCenterTextIcon, DocumentTextIcon, TicketIcon, FilmIcon, LightBulbIcon, HeartIcon, HashtagIcon, DocumentDuplicateIcon, DevicePhoneMobileIcon, ShoppingCartIcon, CpuChipIcon, BoltIcon, ScissorsIcon, PaintBrushIcon, SpeakerWaveIcon, BellIcon, DocumentCheckIcon, ArrowPathRoundedSquareIcon, LanguageIcon, ArchiveBoxIcon } from '@heroicons/react/24/outline';
 
 export const tools: Tool[] = [
   {
@@ -137,6 +137,13 @@ export const tools: Tool[] = [
     category: "Utilitários"
   },
   {
+    key: "translator",
+    icon: <LanguageIcon className="h-8 w-8 text-cyan-400" />,
+    title: "Tradutor",
+    description: "Traduza textos para diversos idiomas com precisão, com o poder da IA.",
+    category: "Utilitários"
+  },
+  {
     key: "google-shopping-ads",
     icon: <ShoppingCartIcon className="h-8 w-8 text-red-500" />,
     title: "Anúncios Google Shopping",
@@ -177,5 +184,19 @@ export const tools: Tool[] = [
     title: "Gerador de Comprovante PIX",
     description: "Preencha os campos manualmente ou use a IA para gerar dados aleatórios e visualizar um modelo de comprovante.",
     category: "Utilitários"
+  },
+  {
+    key: "remarketing-campaign-generator",
+    icon: <ArrowPathRoundedSquareIcon className="h-8 w-8 text-blue-400" />,
+    title: "Gerador de Campanhas de Remarketing",
+    description: "Crie e otimize campanhas de remarketing para reconectar com seu público-alvo e aumentar as conversões.",
+    category: "Estratégia & Análise"
+  },
+  {
+    key: "product-bundle-generator",
+    icon: <ArchiveBoxIcon className="h-8 w-8 text-cyan-400" />,
+    title: "Gerador de Pacotes de Produtos (IA)",
+    description: "Crie pacotes e combos de produtos atraentes com a IA para aumentar o ticket médio.",
+    category: "Estratégia & Análise"
   }
 ];

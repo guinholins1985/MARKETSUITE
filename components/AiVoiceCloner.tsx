@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { ScissorsIcon } from '@heroicons/react/24/outline';
+import { SpeakerWaveIcon } from '@heroicons/react/24/outline';
 
-interface ProfessionalBackgroundRemoverProps {
+interface AiVoiceClonerProps {
   onBack: () => void;
 }
 
-const ProfessionalBackgroundRemover: React.FC<ProfessionalBackgroundRemoverProps> = ({ onBack }) => {
+const AiVoiceCloner: React.FC<AiVoiceClonerProps> = ({ onBack }) => {
   useEffect(() => {
-    const redirectUrl = 'https://removedor-de-fundo-profissional.vercel.app/';
+    const redirectUrl = 'https://clonador-de-voz-ai.vercel.app/';
     window.open(redirectUrl, '_blank');
     onBack();
   }, [onBack]);
@@ -20,15 +20,15 @@ const ProfessionalBackgroundRemover: React.FC<ProfessionalBackgroundRemoverProps
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
             <h2 className="text-xl sm:text-2xl font-bold text-slate-100 flex items-center justify-center gap-3 mt-4">
-                <ScissorsIcon className="h-8 w-8 text-teal-400" />
+                <SpeakerWaveIcon className="h-8 w-8 text-blue-400" />
                 Redirecionando
             </h2>
             <p className="mt-3 max-w-2xl mx-auto text-slate-400 sm:text-lg">
-                Abrindo o Removedor de Fundo Profissional em uma nova aba...
+                Abrindo o Clonador de Voz AI em uma nova aba...
             </p>
         </div>
     </div>
   );
 };
 
-export default ProfessionalBackgroundRemover;
+export default AiVoiceCloner;
