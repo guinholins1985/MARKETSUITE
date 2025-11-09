@@ -5,8 +5,6 @@ import ToolsGrid from './components/ToolsGrid';
 import Footer from './components/Footer';
 import ProfessionalBackgroundRemover from './components/ProfessionalBackgroundRemover';
 import MarketingContentGenerator from './components/MarketingContentGenerator';
-import { Tool } from './types';
-import NotificationGenerator from './components/NotificationGenerator';
 import PixReceiptGenerator from './components/PixReceiptGenerator';
 import ThreeDMockupGenerator from './components/3dMockupGenerator';
 import VisualVariationsGenerator from './components/VisualVariationsGenerator';
@@ -26,6 +24,11 @@ const App: React.FC = () => {
   ];
 
   const handleToolSelect = (toolKey: string) => {
+    if (toolKey === 'notification-generator') {
+      window.open('https://megapost-gerador-notifica-oface.vercel.app/', '_blank');
+      return;
+    }
+    
     if (implementedTools.includes(toolKey)) {
       setActiveTool(toolKey);
     }
@@ -48,14 +51,6 @@ const App: React.FC = () => {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <MarketingContentGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'notification-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <NotificationGenerator onBack={handleBack} />
         </main>
       );
     }
