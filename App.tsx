@@ -8,11 +8,22 @@ import MarketingContentGenerator from './components/MarketingContentGenerator';
 import { Tool } from './types';
 import NotificationGenerator from './components/NotificationGenerator';
 import PixReceiptGenerator from './components/PixReceiptGenerator';
+import ThreeDMockupGenerator from './components/3dMockupGenerator';
+import VisualVariationsGenerator from './components/VisualVariationsGenerator';
+import CaptionGenerator from './components/CaptionGenerator';
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
 
-  const implementedTools = ['professional-background-remover', 'marketing-content-generator', 'notification-generator', 'pix-receipt-generator'];
+  const implementedTools = [
+    'professional-background-remover', 
+    'marketing-content-generator', 
+    'notification-generator', 
+    'pix-receipt-generator',
+    '3d-mockup-generator',
+    'visual-variations-generator',
+    'caption-generator'
+  ];
 
   const handleToolSelect = (toolKey: string) => {
     if (implementedTools.includes(toolKey)) {
@@ -53,6 +64,30 @@ const App: React.FC = () => {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <PixReceiptGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+    
+    if (activeTool === '3d-mockup-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <ThreeDMockupGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'visual-variations-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <VisualVariationsGenerator onBack={handleBack} />
+        </main>
+      );
+    }
+
+    if (activeTool === 'caption-generator') {
+      return (
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <CaptionGenerator onBack={handleBack} />
         </main>
       );
     }
