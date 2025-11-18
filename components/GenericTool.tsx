@@ -1,16 +1,25 @@
 import React from 'react';
 import { ArrowLeftIcon, ClockIcon } from '@heroicons/react/24/outline';
-import { tools } from '../constants';
+import { Tool } from '../types';
 
 interface GenericToolProps {
   onBack: () => void;
-  toolKey: string;
+  tool: Tool;
 }
 
-const GenericTool: React.FC<GenericToolProps> = ({ onBack, toolKey }) => {
-  const tool = tools.find(t => t.key === toolKey);
+const GenericTool: React.FC<GenericToolProps> = ({ onBack, tool }) => {
+  let icon = null;
+  if (tool && tool.icon) {
+    const originalClassName = (tool.icon as React.ReactElement).props.className || '';
+    // Robustly remove old size classes and add new ones
+    const newClassName = originalClassName
+      .split(' ')
+      .filter((cls: string) => !cls.startsWith('h-') && !cls.startsWith('w-'))
+      .concat(['h-10', 'w-10'])
+      .join(' ');
+    icon = React.cloneElement(tool.icon as React.ReactElement, { className: newClassName });
+  }
 
-  const icon = tool ? React.cloneElement(tool.icon as React.ReactElement, { className: (tool.icon as React.ReactElement).props.className.replace('h-8 w-8', 'h-10 w-10') }) : null;
   const title = tool ? tool.title : "Ferramenta";
 
   return (

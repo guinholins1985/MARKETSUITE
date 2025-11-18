@@ -27,7 +27,7 @@ const App: React.FC = () => {
       const ToolComponent = activeToolData.component;
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <ToolComponent onBack={handleBack} toolKey={activeToolData.key} />
+          <ToolComponent onBack={handleBack} tool={activeToolData} />
         </main>
       );
     }

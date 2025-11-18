@@ -8,23 +8,20 @@ interface ToolsGridProps {
 }
 
 const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; isImplemented: boolean; }> = ({ tool, onSelect, isImplemented }) => {
-  const isClickable = isImplemented;
-  
   const cardClasses = `
-    group relative rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300
-    ${isClickable 
-      ? 'cursor-pointer hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10' 
-      : 'cursor-not-allowed opacity-60'}
+    group relative w-full text-left rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300
+    ${isImplemented 
+      ? 'hover:bg-slate-700/80 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl hover:shadow-sky-500/10' 
+      : 'opacity-60'}
   `;
   
-  const handleClick = () => {
-    if (isClickable) {
-      onSelect(tool.key);
-    }
-  };
-
   return (
-    <div className={cardClasses} onClick={handleClick}>
+    <button
+      className={cardClasses}
+      onClick={() => onSelect(tool.key)}
+      disabled={!isImplemented}
+      aria-label={tool.title}
+    >
       <div className="flex items-center gap-4">
         <div className="flex-shrink-0 rounded-lg bg-slate-700 p-3 border border-slate-600 group-hover:border-sky-500 transition-colors">
           {tool.icon}
@@ -38,14 +35,14 @@ const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; isImplem
         {tool.description}
       </p>
        <div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition-all duration-300 [background:radial-gradient(400px_at_50%_50%,_rgba(56,189,248,0.2),_transparent_80%)] group-hover:opacity-100"></div>
-       {!isClickable && (
+       {!isImplemented && (
           <div className="absolute top-2 right-2">
             <span className="inline-flex items-center rounded-full bg-slate-900 px-2 py-1 text-xs font-medium text-slate-400 ring-1 ring-inset ring-slate-700">
               Em Breve
             </span>
           </div>
         )}
-    </div>
+    </button>
   );
 };
 
