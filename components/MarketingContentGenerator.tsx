@@ -121,6 +121,24 @@ const MarketingContentGenerator: React.FC<MarketingContentGeneratorProps> = ({ o
   
   const isDisabled = (!image && !urlInput) || isLoading;
 
+  const renderMarkdown = (text: string) => {
+    if (!text) return '';
+    const html = text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+        .replace(/^\s*[-*]\s+(.*)$/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+        .replace(/<\/ul>\s*<ul>/gs, '')
+        .replace(/\n/g, '<br />')
+        .replace(/<br \s*\/?>\s*<li/g, '<li')
+        .replace(/<\/li><br \s*\/?>/g, '</li>')
+        .replace(/<\/ul><br \s*\/?>/g, '</ul>');
+    return { __html: html };
+  };
+
   return (
     <div className="py-12 md:py-20 animate-fade-in">
       <button onClick={onBack} className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors mb-8 group">
@@ -254,9 +272,10 @@ const MarketingContentGenerator: React.FC<MarketingContentGeneratorProps> = ({ o
                   </div>
                 </div>
             ) : generatedContent ? (
-                <div className="prose prose-invert prose-sm max-w-none h-full overflow-y-auto" style={{whiteSpace: 'pre-wrap'}}>
-                  {generatedContent}
-                </div>
+                <div 
+                  className="prose prose-invert prose-sm max-w-none h-full overflow-y-auto" 
+                  dangerouslySetInnerHTML={renderMarkdown(generatedContent)}
+                />
             ) : (
               <div className="flex items-center justify-center h-full text-center text-slate-500">
                   <div>

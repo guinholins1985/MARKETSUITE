@@ -128,7 +128,7 @@ const PixReceiptGenerator: React.FC<{ onBack: () => void; }> = ({ onBack }) => {
         <div className="flex flex-col gap-4 p-6 rounded-xl border border-white/10 bg-slate-800/80 backdrop-blur-sm">
           <h3 className="text-xl font-bold text-slate-100 mb-2">1. Dados da Transação</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2">
-              {Object.keys(formData).map((key) => {
+              {Object.keys(formData).filter(key => key !== 'dateTime').map((key) => {
                   const labels: Record<string, string> = {
                       institution: 'Instituição', dateTime: 'Data/Hora', transactionId: 'ID da Transação', value: 'Valor (R$)', senderName: 'Nome Remetente', senderCpf: 'CPF Remetente', senderInstitution: 'Instituição Remetente', senderAgency: 'Agência Remetente', senderAccount: 'Conta Remetente', receiverName: 'Nome Destinatário', receiverCpf: 'CPF Destinatário', receiverInstitution: 'Instituição Destinatário',
                   };

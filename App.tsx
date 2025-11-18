@@ -58,154 +58,32 @@ const App: React.FC = () => {
   };
   
   const renderContent = () => {
-    if (activeTool === 'professional-background-remover') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <ProfessionalBackgroundRemover onBack={handleBack} />
-        </main>
-      );
-    }
+    const toolComponents: { [key: string]: React.ReactNode } = {
+      'professional-background-remover': <ProfessionalBackgroundRemover onBack={handleBack} />,
+      'marketing-content-generator': <MarketingContentGenerator onBack={handleBack} />,
+      'notification-generator': <NotificationGenerator onBack={handleBack} />,
+      'pix-receipt-generator': <PixReceiptGenerator onBack={handleBack} />,
+      '3d-mockup-generator': <ThreeDMockupGenerator onBack={handleBack} />,
+      'visual-variations-generator': <VisualVariationsGenerator onBack={handleBack} />,
+      'caption-generator': <CaptionGenerator onBack={handleBack} />,
+      'coupon-generator': <CouponGenerator onBack={handleBack} />,
+      'post-generator': <PostGenerator onBack={handleBack} toolKey="post-generator" />,
+      'faq-generator': <PostGenerator onBack={handleBack} toolKey="faq-generator" />,
+      'banner-generator': <BannerGenerator onBack={handleBack} />,
+      'ppc-ad-generator': <PpcAdGenerator onBack={handleBack} />,
+      'remarketing-campaign-generator': <RemarketingCampaignGenerator onBack={handleBack} />,
+      'translator': <Translator onBack={handleBack} />,
+      'stories-image-generator': <StoriesImageGenerator onBack={handleBack} />,
+      'ad-optimizer': <AdOptimizer onBack={handleBack} />,
+      'mental-triggers-generator': <MentalTriggersGenerator onBack={handleBack} />,
+      'product-bundle-generator': <ProductBundleGenerator onBack={handleBack} />,
+      'ai-voice-cloner': <AiVoiceCloner onBack={handleBack} />,
+    };
 
-    if (activeTool === 'marketing-content-generator') {
+    if (activeTool && toolComponents[activeTool]) {
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <MarketingContentGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-    
-    if (activeTool === 'notification-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <NotificationGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'pix-receipt-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <PixReceiptGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-    
-    if (activeTool === '3d-mockup-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <ThreeDMockupGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'visual-variations-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <VisualVariationsGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'caption-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <CaptionGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'coupon-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <CouponGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'post-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <PostGenerator onBack={handleBack} toolKey={activeTool} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'faq-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <PostGenerator onBack={handleBack} toolKey={activeTool} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'banner-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <BannerGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'ppc-ad-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <PpcAdGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'remarketing-campaign-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <RemarketingCampaignGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-    
-    if (activeTool === 'translator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <Translator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'stories-image-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <StoriesImageGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'ad-optimizer') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <AdOptimizer onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'mental-triggers-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <MentalTriggersGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'product-bundle-generator') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <ProductBundleGenerator onBack={handleBack} />
-        </main>
-      );
-    }
-
-    if (activeTool === 'ai-voice-cloner') {
-      return (
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <AiVoiceCloner onBack={handleBack} />
+          {toolComponents[activeTool]}
         </main>
       );
     }
@@ -217,7 +95,7 @@ const App: React.FC = () => {
         <Footer />
       </main>
     );
-  }
+  };
 
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans overflow-x-hidden">

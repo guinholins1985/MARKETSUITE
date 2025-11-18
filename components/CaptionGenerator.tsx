@@ -53,12 +53,12 @@ As legendas devem ser criativas, incluir emojis relevantes e hashtags populares 
 
   const handleCopy = () => {
     if (!generatedContent) return;
+    // Cleans up markdown for easier pasting, but preserves hashtags and content.
     const plainText = generatedContent
-      .replace(/###\s\d+\.\s/g, '')
-      .replace(/\*\*/g, '')
-      .replace(/\*/g, '')
-      .replace(/---/g, '\n\n')
-      .replace(/#/g, '');
+      .replace(/###\s\d+\.\s/g, '')      // Removes headers like '### 1. '
+      .replace(/\*\*(.*?)\*\*/g, '$1')  // Removes bold markers but keeps text
+      .replace(/\B\*(.+?)\*\B/g, '$1')    // Safely removes italic markers but keeps text
+      .replace(/---/g, '\n\n');         // Replaces horizontal rules with newlines
     navigator.clipboard.writeText(plainText.trim());
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -68,6 +68,25 @@ As legendas devem ser criativas, incluir emojis relevantes e hashtags populares 
 
   const platforms = ["Instagram", "Facebook", "LinkedIn", "TikTok", "Twitter/X"];
   const tones = ["Engajado", "Profissional", "Divertido", "Inspirador", "Vendas"];
+
+  const renderMarkdown = (text: string) => {
+    if (!text) return '';
+    const html = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+      .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+      .replace(/^\s*[-*]\s+(.*)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+      .replace(/<\/ul>\s*<ul>/gs, '')
+      .replace(/---/g, '<hr class="border-slate-700 my-4">')
+      .replace(/\n/g, '<br />')
+      .replace(/<br \s*\/?>\s*<li/g, '<li')
+      .replace(/<\/li><br \s*\/?>/g, '</li>')
+      .replace(/<\/ul><br \s*\/?>/g, '</ul>');
+    return { __html: html };
+  };
 
   return (
     <div className="py-12 md:py-20 animate-fade-in">
@@ -168,7 +187,10 @@ As legendas devem ser criativas, incluir emojis relevantes e hashtags populares 
                   </div>
                 </div>
             ) : generatedContent ? (
-                <div className="prose prose-invert prose-sm max-w-none h-full overflow-y-auto" style={{whiteSpace: 'pre-wrap'}} dangerouslySetInnerHTML={{ __html: generatedContent.replace(/---/g, '<hr class="border-slate-700 my-4">') }}>
+                <div 
+                  className="prose prose-invert prose-sm max-w-none h-full overflow-y-auto" 
+                  dangerouslySetInnerHTML={renderMarkdown(generatedContent)}
+                >
                 </div>
             ) : (
               <div className="flex items-center justify-center h-full text-center text-slate-500">
