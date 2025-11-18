@@ -4,31 +4,11 @@ import { Tool } from '../types';
 interface ToolsGridProps {
   tools: Tool[];
   onToolSelect: (key: string) => void;
+  implementedTools: string[];
 }
 
-const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ tool, onSelect }) => {
-  const implementedTools = [
-      'professional-background-remover',
-      'marketing-content-generator',
-      'notification-generator',
-      'pix-receipt-generator',
-      '3d-mockup-generator',
-      'visual-variations-generator',
-      'caption-generator',
-      'coupon-generator',
-      'post-generator',
-      'faq-generator',
-      'banner-generator',
-      'ppc-ad-generator',
-      'remarketing-campaign-generator',
-      'translator',
-      'stories-image-generator',
-      'ad-optimizer',
-      'mental-triggers-generator',
-      'product-bundle-generator',
-      'ai-voice-cloner'
-  ];
-  const isClickable = implementedTools.includes(tool.key);
+const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; isImplemented: boolean; }> = ({ tool, onSelect, isImplemented }) => {
+  const isClickable = isImplemented;
   
   const cardClasses = `
     group relative rounded-xl border border-white/10 bg-slate-800/80 p-6 backdrop-blur-sm transition-all duration-300
@@ -69,7 +49,7 @@ const ToolCard: React.FC<{ tool: Tool; onSelect: (key: string) => void; }> = ({ 
   );
 };
 
-const ToolsGrid: React.FC<ToolsGridProps> = ({ tools, onToolSelect }) => {
+const ToolsGrid: React.FC<ToolsGridProps> = ({ tools, onToolSelect, implementedTools }) => {
   return (
     <section id="tools" className="py-12 md:py-20">
       <div className="text-center mb-12 lg:mb-16">
@@ -80,7 +60,12 @@ const ToolsGrid: React.FC<ToolsGridProps> = ({ tools, onToolSelect }) => {
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {tools.map((tool) => (
-          <ToolCard key={tool.key} tool={tool} onSelect={onToolSelect} />
+          <ToolCard 
+            key={tool.key} 
+            tool={tool} 
+            onSelect={onToolSelect} 
+            isImplemented={implementedTools.includes(tool.key)} 
+          />
         ))}
       </div>
     </section>

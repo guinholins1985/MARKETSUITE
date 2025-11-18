@@ -6,4 +6,5 @@ export interface Tool {
   title: string;
   description: string;
   category: string;
+  component: React.FC<{ onBack: () => void; toolKey?: string; }>;
 }

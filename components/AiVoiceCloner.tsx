@@ -1,32 +1,28 @@
-import React, { useEffect } from 'react';
-import { SpeakerWaveIcon } from '@heroicons/react/24/outline';
+import React from 'react';
+import { ArrowLeftIcon, ClockIcon, SpeakerWaveIcon } from '@heroicons/react/24/outline';
 
 interface AiVoiceClonerProps {
   onBack: () => void;
 }
 
 const AiVoiceCloner: React.FC<AiVoiceClonerProps> = ({ onBack }) => {
-  useEffect(() => {
-    const redirectUrl = 'https://clonador-de-voz-ai.vercel.app/';
-    window.open(redirectUrl, '_blank');
-    onBack();
-  }, [onBack]);
-
   return (
-    <div className="py-12 md:py-20 animate-fade-in flex items-center justify-center min-h-[300px]">
-        <div className="text-center">
-            <svg className="animate-spin mx-auto h-12 w-12 text-sky-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-100 flex items-center justify-center gap-3 mt-4">
-                <SpeakerWaveIcon className="h-8 w-8 text-blue-400" />
-                Redirecionando
-            </h2>
-            <p className="mt-3 max-w-2xl mx-auto text-slate-400 sm:text-lg">
-                Abrindo o Clonador de Voz AI em uma nova aba...
-            </p>
-        </div>
+    <div className="py-12 md:py-20 animate-fade-in">
+      <button onClick={onBack} className="flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors mb-8 group">
+        <ArrowLeftIcon className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+        Voltar para Ferramentas
+      </button>
+
+      <div className="text-center">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-100 flex items-center justify-center gap-3">
+            <SpeakerWaveIcon className="h-10 w-10 text-blue-400" />
+            Clonador de Voz AI
+        </h2>
+        <p className="mt-6 max-w-2xl mx-auto text-slate-400 sm:text-lg bg-slate-800/50 border border-sky-500/20 rounded-lg p-4 flex items-center justify-center gap-3">
+            <ClockIcon className="h-6 w-6 text-sky-400" />
+            <span>Esta ferramenta está em desenvolvimento e estará disponível em breve.</span>
+        </p>
+      </div>
     </div>
   );
 };

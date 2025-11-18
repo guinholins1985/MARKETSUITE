@@ -3,49 +3,12 @@ import { tools } from './constants';
 import Hero from './components/Hero';
 import ToolsGrid from './components/ToolsGrid';
 import Footer from './components/Footer';
-import ProfessionalBackgroundRemover from './components/ProfessionalBackgroundRemover';
-import MarketingContentGenerator from './components/MarketingContentGenerator';
-import NotificationGenerator from './components/NotificationGenerator';
-import PixReceiptGenerator from './components/PixReceiptGenerator';
-import ThreeDMockupGenerator from './components/3dMockupGenerator';
-import VisualVariationsGenerator from './components/VisualVariationsGenerator';
-import CaptionGenerator from './components/CaptionGenerator';
-import CouponGenerator from './components/CouponGenerator';
-import PostGenerator from './components/PostGenerator';
-import BannerGenerator from './components/BannerGenerator';
-import PpcAdGenerator from './components/PpcAdGenerator';
-import RemarketingCampaignGenerator from './components/RemarketingCampaignGenerator';
-import Translator from './components/Translator';
-import StoriesImageGenerator from './components/StoriesImageGenerator';
-import AdOptimizer from './components/AdOptimizer';
-import MentalTriggersGenerator from './components/MentalTriggersGenerator';
-import ProductBundleGenerator from './components/ProductBundleGenerator';
-import AiVoiceCloner from './components/AiVoiceCloner';
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
 
-  const implementedTools = [
-    'professional-background-remover', 
-    'marketing-content-generator', 
-    'notification-generator', 
-    'pix-receipt-generator',
-    '3d-mockup-generator',
-    'visual-variations-generator',
-    'caption-generator',
-    'coupon-generator',
-    'post-generator',
-    'faq-generator',
-    'banner-generator',
-    'ppc-ad-generator',
-    'remarketing-campaign-generator',
-    'translator',
-    'stories-image-generator',
-    'ad-optimizer',
-    'mental-triggers-generator',
-    'product-bundle-generator',
-    'ai-voice-cloner'
-  ];
+  // Única fonte de verdade para ferramentas implementadas
+  const implementedTools: string[] = [];
 
   const handleToolSelect = (toolKey: string) => {
     if (implementedTools.includes(toolKey)) {
@@ -58,32 +21,13 @@ const App: React.FC = () => {
   };
   
   const renderContent = () => {
-    const toolComponents: { [key: string]: React.ReactNode } = {
-      'professional-background-remover': <ProfessionalBackgroundRemover onBack={handleBack} />,
-      'marketing-content-generator': <MarketingContentGenerator onBack={handleBack} />,
-      'notification-generator': <NotificationGenerator onBack={handleBack} />,
-      'pix-receipt-generator': <PixReceiptGenerator onBack={handleBack} />,
-      '3d-mockup-generator': <ThreeDMockupGenerator onBack={handleBack} />,
-      'visual-variations-generator': <VisualVariationsGenerator onBack={handleBack} />,
-      'caption-generator': <CaptionGenerator onBack={handleBack} />,
-      'coupon-generator': <CouponGenerator onBack={handleBack} />,
-      'post-generator': <PostGenerator onBack={handleBack} toolKey="post-generator" />,
-      'faq-generator': <PostGenerator onBack={handleBack} toolKey="faq-generator" />,
-      'banner-generator': <BannerGenerator onBack={handleBack} />,
-      'ppc-ad-generator': <PpcAdGenerator onBack={handleBack} />,
-      'remarketing-campaign-generator': <RemarketingCampaignGenerator onBack={handleBack} />,
-      'translator': <Translator onBack={handleBack} />,
-      'stories-image-generator': <StoriesImageGenerator onBack={handleBack} />,
-      'ad-optimizer': <AdOptimizer onBack={handleBack} />,
-      'mental-triggers-generator': <MentalTriggersGenerator onBack={handleBack} />,
-      'product-bundle-generator': <ProductBundleGenerator onBack={handleBack} />,
-      'ai-voice-cloner': <AiVoiceCloner onBack={handleBack} />,
-    };
+    const activeToolData = tools.find(t => t.key === activeTool);
 
-    if (activeTool && toolComponents[activeTool]) {
+    if (activeToolData) {
+      const ToolComponent = activeToolData.component;
       return (
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {toolComponents[activeTool]}
+          <ToolComponent onBack={handleBack} toolKey={activeToolData.key} />
         </main>
       );
     }
@@ -91,7 +35,7 @@ const App: React.FC = () => {
     return (
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Hero />
-        <ToolsGrid tools={tools} onToolSelect={handleToolSelect} />
+        <ToolsGrid tools={tools} onToolSelect={handleToolSelect} implementedTools={implementedTools} />
         <Footer />
       </main>
     );
